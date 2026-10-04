@@ -1,0 +1,30 @@
+Reflection - Keyboard Piano
+Name:Fawzy Musa ___________________
+
+(Rewrite these answers in your own words before submitting.)
+
+1. What is the difference between keydown and keyup? Why did we need both?
+keydown happens when I press a key down, and keyup happens when I let it go.
+I needed both because keydown turns the piano key ON (adds the "active" class
+and plays the note) and keyup turns it OFF (removes the "active" class).
+
+2. What information does the event object e give you? Name two properties you used.
+The event object tells me details about what happened. I used e.code to know
+which physical key was pressed, and e.repeat to ignore the key when I hold it
+down so the note does not repeat.
+
+3. Why did we listen on document instead of on each piano key for the keyboard?
+Keyboard events go to the whole page, not to a single div. A div cannot "receive"
+a key press unless it has focus. One listener on document catches every key
+press, and then I use the key letter to find the right piano key.
+
+4. Name one other place on a real website where an event listener is used.
+A "click" listener on a Like or Submit button, or an "input" listener on a
+search box that shows suggestions while the user types.
+
+Bonus challenges I added
+- Click to play: mousedown, mouseup and mouseleave listeners on every .key (querySelectorAll + forEach).
+- Black keys: W E T Y U play C#, D#, F#, G#, A#.
+- Sound selector: a <select> with a "change" event that changes osc.type (sine, square, triangle, sawtooth).
+- Show last note: the name of the last note played is shown in big text above the piano.
+- Song mode: choose a song, press Start, and the next key to press glows.

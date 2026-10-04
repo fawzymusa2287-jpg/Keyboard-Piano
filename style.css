@@ -1,0 +1,126 @@
+/* ---------- Page ---------- */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #1f2a44;
+  color: #f3efe6;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+h1 { margin: 0 0 6px; font-size: 2.2rem; }
+.hint { margin: 0 0 32px; opacity: 0.75; }
+
+/* ---------- Piano: keys side by side ---------- */
+.piano {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  padding: 18px;
+  background: #0f1628;
+  border-radius: 12px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* ---------- One white key ---------- */
+.key {
+  width: 60px;
+  height: 200px;
+  flex: none;
+  background: white;
+  color: #222;
+  border: 1px solid #999;
+  border-radius: 6px;
+  box-shadow: 0 5px 0 #b9b9b9;      /* gives a "3D" key edge */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 14px;
+  text-align: center;
+  transition: background 0.05s, transform 0.05s, box-shadow 0.05s;
+}
+
+.note { font-size: 1.4rem; font-weight: bold; }
+.solfege { font-size: 0.85rem; color: #666; margin-bottom: 10px; }
+
+kbd {
+  font-family: monospace;
+  background: #eee;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+/* ---------- Pressed state (added/removed by JavaScript) ---------- */
+.key.active {
+  background: gold;
+  transform: translateY(3px);        /* looks pushed down */
+  box-shadow: 0 2px 0 #b8960b;
+}
+
+/* ================= Bonus styles ================= */
+
+.piano { position: relative; }          /* black keys are positioned inside it */
+
+.key { cursor: pointer; user-select: none; }
+
+/* Black keys: narrower, shorter, sitting between white keys */
+.key.black {
+  position: absolute;
+  top: 18px;
+  width: 40px;
+  height: 120px;
+  background: #111;
+  color: white;
+  border: 1px solid #000;
+  box-shadow: 0 4px 0 #000;
+  padding-bottom: 8px;
+  z-index: 2;                           /* above white keys */
+}
+.key.black .note { font-size: 1rem; }
+.key.black kbd { background: #333; color: white; border-color: #555; }
+
+/* left = 18px padding + 66px * key number + 43px  (66 = key 60 + gap 6) */
+.key[data-key="w"] { left: 61px; }      /* C#  between C and D */
+.key[data-key="e"] { left: 127px; }     /* D#  between D and E */
+.key[data-key="t"] { left: 259px; }     /* F#  between F and G */
+.key[data-key="y"] { left: 325px; }     /* G#  between G and A */
+.key[data-key="u"] { left: 391px; }     /* A#  between A and B */
+
+.key.black.active {
+  background: #e0a800;
+  color: #111;
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #000;
+}
+
+.last-note { font-size: 2.4rem; font-weight: bold; margin-bottom: 14px; min-height: 3rem; }
+.last-note span { color: gold; }
+
+.sound-select { margin-bottom: 18px; }
+.sound-select select { font-size: 1rem; padding: 4px 8px; border-radius: 6px; }
+
+/* ================= Song mode ================= */
+.song-box { margin-bottom: 18px; text-align: center; }
+.song-box select, .song-box button {
+  font-size: 1rem; padding: 6px 12px; border-radius: 6px; margin: 0 3px;
+}
+.song-box button { cursor: pointer; }
+
+#songLetters { margin: 12px 0 4px; min-height: 2rem; font-family: monospace; font-size: 1.3rem; }
+#songLetters span { display: inline-block; padding: 2px 6px; opacity: 0.45; }
+#songLetters span.done    { opacity: 1; color: #6ee7a8; }
+#songLetters span.current { opacity: 1; color: gold; border-bottom: 3px solid gold; }
+#songStatus { opacity: 0.85; }
+
+/* Glow around the key you must press next */
+.key.hint {
+  outline: 4px solid #4fd1c5;
+  outline-offset: 2px;
+  box-shadow: 0 0 18px 4px rgba(79, 209, 197, 0.8);
+}

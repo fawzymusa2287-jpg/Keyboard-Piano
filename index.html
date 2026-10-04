@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fawzy Keyboard Piano</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Fawzy's Keyboard Piano</h1>
+  <p class="hint">Press A S D F G H J K (white keys) and W E T Y U (black keys), or click with the mouse</p>
+
+  <!-- Bonus: last note played -->
+  <div class="last-note">Last note: <span id="lastNote">-</span></div>
+
+  <!-- Bonus: sound selector -->
+  <label class="sound-select">
+    Sound:
+    <select id="waveType">
+      <option value="sine">Sine</option>
+      <option value="square">Square</option>
+      <option value="triangle">Triangle</option>
+      <option value="sawtooth">Sawtooth</option>
+    </select>
+  </label>
+
+  <!-- Bonus: song mode -->
+  <div class="song-box">
+    <select id="songSelect">
+      <option value="twinkle">Twinkle Twinkle</option>
+      <option value="ode">Ode to Joy</option>
+    </select>
+    <button id="startSong">Start song</button>
+    <button id="stopSong">Stop</button>
+    <div id="songLetters"></div>
+    <div id="songStatus">Choose a song and press Start.</div>
+  </div>
+
+  <div class="piano">
+    <!-- White keys -->
+    <div class="key" data-key="a"><span class="note">C</span><span class="solfege">Do</span><kbd>A</kbd></div>
+    <div class="key" data-key="s"><span class="note">D</span><span class="solfege">Re</span><kbd>S</kbd></div>
+    <div class="key" data-key="d"><span class="note">E</span><span class="solfege">Mi</span><kbd>D</kbd></div>
+    <div class="key" data-key="f"><span class="note">F</span><span class="solfege">Fa</span><kbd>F</kbd></div>
+    <div class="key" data-key="g"><span class="note">G</span><span class="solfege">Sol</span><kbd>G</kbd></div>
+    <div class="key" data-key="h"><span class="note">A</span><span class="solfege">La</span><kbd>H</kbd></div>
+    <div class="key" data-key="j"><span class="note">B</span><span class="solfege">Ti</span><kbd>J</kbd></div>
+    <div class="key" data-key="k"><span class="note">C</span><span class="solfege">Do</span><kbd>K</kbd></div>
+
+    <!-- Bonus: black keys (placed on top of the white keys with CSS) -->
+    <div class="key black" data-key="w"><span class="note">C#</span><kbd>W</kbd></div>
+    <div class="key black" data-key="e"><span class="note">D#</span><kbd>E</kbd></div>
+    <div class="key black" data-key="t"><span class="note">F#</span><kbd>T</kbd></div>
+    <div class="key black" data-key="y"><span class="note">G#</span><kbd>Y</kbd></div>
+    <div class="key black" data-key="u"><span class="note">A#</span><kbd>U</kbd></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
